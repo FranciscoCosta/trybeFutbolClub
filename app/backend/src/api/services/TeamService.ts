@@ -8,4 +8,8 @@ export default class TeamService implements IServiceTeam {
   public async readAll(): Promise<Team[]> {
     return this.model.findAll();
   }
+
+  public async readById(id: number): Promise<Team | null> {
+    return this.model.findByPk(id);
+  }
 }

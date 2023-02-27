@@ -12,6 +12,11 @@ class TeamController {
     console.log(result);
     res.status(200).json(result);
   }
+
+  async readById(req: Request, res: Response) {
+    const result = await this._service.readById(Number(req.params.id));
+    res.status(200).json(result);
+  }
 }
 
 export default TeamController;
