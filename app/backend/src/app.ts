@@ -1,10 +1,12 @@
 import * as express from 'express';
+import teamRoutes from './routes/TeamRoutes';
 // Francisco Costa
 class App {
   public app: express.Express;
 
   constructor() {
     this.app = express();
+    this.routes();
 
     this.config();
 
@@ -22,6 +24,10 @@ class App {
 
     this.app.use(express.json());
     this.app.use(accessControl);
+  }
+
+  private routes():void {
+    this.app.use(teamRoutes);
   }
 
   public start(PORT: string | number):void {
