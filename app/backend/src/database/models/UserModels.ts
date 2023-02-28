@@ -1,12 +1,15 @@
 import { Model, INTEGER, STRING } from 'sequelize';
 import db from '.';
 
-class Team extends Model {
+class User extends Model {
   declare id: number;
-  declare teamName: string;
+  declare userName: string;
+  declare password: string;
+  declare email: string;
+  declare role: string;
 }
 
-Team.init({
+User.init({
   id: {
     type: INTEGER,
     primaryKey: true,
@@ -16,6 +19,7 @@ Team.init({
   userName: {
     type: STRING,
     allowNull: false,
+    field: 'username',
   },
   password: {
     type: STRING,
@@ -36,4 +40,4 @@ Team.init({
   timestamps: false,
 });
 
-export default Team;
+export default User;

@@ -1,5 +1,7 @@
 import * as express from 'express';
 import teamRoutes from './routes/TeamRoutes';
+import userRoutes from './routes/UserRoutes';
+import 'express-async-errors';
 // Francisco Costa
 class App {
   public app: express.Express;
@@ -27,6 +29,7 @@ class App {
 
   private routes():void {
     this.app.use(teamRoutes);
+    this.app.use(userRoutes);
   }
 
   public start(PORT: string | number):void {

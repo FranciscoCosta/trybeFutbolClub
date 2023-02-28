@@ -53,7 +53,14 @@ describe('Teste de teams', () => {
 
     expect(response.status).to.be.equal(200);
     expect(response.body).to.be.deep.eq(ControllerOutPut);
+})
 
 
+it('Deve retornar errpr 404 quando id nao existe', async() => {
+
+  sinon.stub(Model,'findByPk').resolves();
+
+  const response = await chai.request(app).get('/teams/1');
+  expect (response.status).to.be.equal(200);
 })
 })
