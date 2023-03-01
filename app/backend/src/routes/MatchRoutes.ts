@@ -1,4 +1,5 @@
 import { Router, Request, Response } from 'express';
+import validateTeam from '../middlewares/validateTeam';
 import validateToken from '../middlewares/validateToken';
 import MatchService from '../api/services/MatchService';
 import MatchController from '../api/controllers/MatchController';
@@ -17,7 +18,7 @@ matchRoutes.patch('/matches/:id/finish', validateToken, (req, res) =>
 matchRoutes.patch('/matches/:id', validateToken, (req, res) =>
   matchController.updateMatch(req, res));
 
-matchRoutes.post('/matches', validateToken, (req, res) =>
+matchRoutes.post('/matches', validateToken, validateTeam, (req, res) =>
   matchController.saveMatch(req, res));
 
 export default matchRoutes;

@@ -28,8 +28,12 @@ class MatchController {
 
   async saveMatch(req: Request, res: Response) {
     const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals } = req.body;
-    const match = await
-    await this._service.saveMatch(homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals);
+    const match = await this._service.saveMatch(
+      homeTeamId,
+      awayTeamId,
+      homeTeamGoals,
+      awayTeamGoals,
+    );
     res.status(201).json(match);
   }
 }
