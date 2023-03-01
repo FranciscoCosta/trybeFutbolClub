@@ -5,6 +5,7 @@ import Jwt from '../utils/Jwt';
 export interface TokenRequest extends Request {
   tokenVerify?: string | jwt.JwtPayload;
 }
+
 export default function validateToken(req :TokenRequest, res:Response, next: NextFunction) {
   const token = req.headers.authorization;
   if (!token) {

@@ -21,7 +21,8 @@ class UserController {
     const email = typeof req.tokenVerify === 'object' ? req.tokenVerify.email : undefined;
     console.log(email, 'EStou aqui');
     const role = await this._service.loginRole(email);
-    res.status(200).json({ role });
+    if (!role) return res.status(401).json({ message: 'Token not found' });
+    return res.status(200).json({ role });
   }
 }
 

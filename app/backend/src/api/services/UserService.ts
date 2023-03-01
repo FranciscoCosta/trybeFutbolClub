@@ -14,7 +14,6 @@ export default class UserService implements IUserServices {
     if (!user) return undefined;
 
     const verifyPassword = bcrypt.compareSync(password, user.password);
-    console.log(password, verifyPassword);
     if (!verifyPassword) return undefined;
 
     const token = Jwt.buildToken(email);
