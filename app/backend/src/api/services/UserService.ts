@@ -7,7 +7,7 @@ import User from '../../database/models/UserModels';
 import IUserServices from '../interface/IUserService';
 
 export default class UserService implements IUserServices {
-  protected model : ModelStatic<User> = User;
+  protected model: ModelStatic<User> = User;
 
   async login({ email, password }: ILogin): Promise<Itoken | undefined> {
     const user = await this.model.findOne({ where: { email } });
@@ -20,7 +20,7 @@ export default class UserService implements IUserServices {
     return { token };
   }
 
-  async loginRole(email :string): Promise<string | undefined> {
+  async loginRole(email: string): Promise<string | undefined> {
     const user = await this.model.findOne({ where: { email } });
     if (!user) return undefined;
 

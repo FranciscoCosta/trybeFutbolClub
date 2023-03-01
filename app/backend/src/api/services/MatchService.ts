@@ -37,4 +37,19 @@ export default class UserService {
       { where: { id } },
     );
   }
+
+  async saveMatch(
+    homeTeamId: number,
+    awayTeamId: number,
+    homeTeamGoals: Date,
+    awayTeamGoals: string,
+  ) {
+    return this.model.create({
+      homeTeamId,
+      awayTeamId,
+      homeTeamGoals,
+      awayTeamGoals,
+      inProgress: true,
+    });
+  }
 }

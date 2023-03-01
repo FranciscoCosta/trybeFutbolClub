@@ -25,6 +25,12 @@ class MatchController {
     await this._service.updateMatch(Number(id), homeTeamGoals, awayTeamGoals);
     return res.status(200).json({ message: 'Updated' });
   }
-}
 
+  async saveMatch(req: Request, res: Response) {
+    const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals } = req.body;
+    const match = await
+    await this._service.saveMatch(homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals);
+    res.status(201).json(match);
+  }
+}
 export default MatchController;
