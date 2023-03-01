@@ -22,11 +22,18 @@ export default class UserService {
   }
 
   public async finishMatch(id: number): Promise<void> {
-    console.log(id, 'ID do elemento');
-    const match = await this.model.findByPk(id);
-    console.log(match, 'Retorno do find');
+    await this.model.findByPk(id);
+    await this.model.update({ inProgress: false }, { where: { id } });
+  }
+
+  public async updateMatch(
+    id: number,
+    homeTeamGoals: number,
+    awayTeamGoals: number,
+  ): Promise<void> {
+    await this.model.findByPk(id);
     await this.model.update(
-      { inProgress: false },
+      { homeTeamGoals, awayTeamGoals },
       { where: { id } },
     );
   }
