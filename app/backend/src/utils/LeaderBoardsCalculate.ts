@@ -80,11 +80,11 @@ const calculatePointsHome = (matches: IMatch[]) => {
 
 const calculatePointsAway = (matches: IMatch[]) => {
   matches.forEach(({ homeTeamGoals, awayTeamGoals }) => {
-    if (homeTeamGoals > awayTeamGoals) {
+    if (awayTeamGoals > homeTeamGoals) {
       victoryAway(homeTeamGoals, awayTeamGoals);
     }
     if (homeTeamGoals === awayTeamGoals) drawAway(homeTeamGoals, awayTeamGoals);
-    if (homeTeamGoals < awayTeamGoals) defeatAway(homeTeamGoals, awayTeamGoals);
+    if (awayTeamGoals < homeTeamGoals) defeatAway(homeTeamGoals, awayTeamGoals);
   });
 };
 
@@ -109,6 +109,10 @@ const StatisticTeamAway = (name: string, matches: IMatch[]) => {
   TeamStats.name = name;
   calculatePointsAway(matches);
   TeamStats.totalGames += 1;
+  TeamStats.goalsBalance = TeamStats.goalsFavor - TeamStats.goalsOwn;
+  TeamStats.efficiency = Number(
+    ((TeamStats.totalPoints / (TeamStats.totalGames * 3)) * 100).toFixed(2),
+  );
 
   return TeamStats;
 };
