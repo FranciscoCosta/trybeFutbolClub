@@ -3,6 +3,7 @@ import 'express-async-errors';
 import teamRoutes from './routes/TeamRoutes';
 import userRoutes from './routes/UserRoutes';
 import matchRoutes from './routes/MatchRoutes';
+import leaderboardRoutes from './routes/LeaderboardRoutes';
 import errorMiddleware from './middlewares/errorHandler';
 // Francisco Costa
 class App {
@@ -36,6 +37,7 @@ class App {
     this.app.use(teamRoutes);
     this.app.use(userRoutes);
     this.app.use(matchRoutes);
+    this.app.use(leaderboardRoutes);
   }
 
   public start(PORT: string | number):void {
